@@ -3,7 +3,7 @@
  */
 
 //Exporting from game.js and Importing to game.test.js
-const { game, newGame, showScore, addTurn } = require("../game");
+const { game, newGame, showScore, addTurn, lightsOn } = require("../game");
 
 beforeAll( () => {
     let fs = require("fs");
@@ -33,6 +33,7 @@ describe("game object contains correct keys", () =>{
 
 // for the newGame 
 describe("newGame works correctly", () => {
+    // beforeAll runs before all of the tests
     beforeAll(() => {
         game.score = 42;
         game.playerMoves = ["button1", "button2"];
@@ -51,6 +52,31 @@ describe("newGame works correctly", () => {
     });
     test("should display 0 for the element with the id of score", () =>{
         expect(document.getElementById("score").innerText).toEqual(0);
+    })
+});
+
+// For the gameplay
+describe("gameplay works correctly", () =>{
+    //beforeEach runs before each test are run
+    beforeEach(() =>{
+        game.score = 0;
+        game.currentGame = [];
+        game.playerMoves = [];
+        addTurn();
+    });
+    afterEach(() =>{
+        game.score = 0;
+        game.currentGame = [];
+        game.playerMoves = [];
+    });
+    test("addTurn adds a new turn to the game", () =>{
+        addTurn();
+        expect(game.currentGame.length).toBe(2);
+    });
+    test("should add correct class to light up the buttons", () =>{
+        let button = document.getElementById(game.currentGame[0]);
+        lightsOn(game.currentGame[0]);
+        expect(button.classList).toContain("light");
     })
 });
 

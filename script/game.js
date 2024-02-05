@@ -3,7 +3,7 @@ let game = {
     currentGame: [],
     playerMoves: [],
     choices: ["button1", "button2", "button3", "button4"],
-}
+};
 
 // The newGame function
 function newGame(){
@@ -30,4 +30,11 @@ function showScore(){
     document.getElementById("score").innerText = game.score;
 }
 
-module.exports = { game, newGame, showScore, addTurn };
+function lightsOn(circ){
+    document.getElementById(circ).classList.add("light");
+    setTimeout( function () {
+        document.getElementById(circ).classList.remove('light');
+    }, 400);
+}
+
+module.exports = { game, newGame, showScore, addTurn, lightsOn };

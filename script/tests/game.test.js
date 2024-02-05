@@ -3,7 +3,7 @@
  */
 
 //Exporting from game.js and Importing to game.test.js
-const { game, newGame, showScore } = require("../game");
+const { game, newGame, showScore, addTurn } = require("../game");
 
 beforeAll( () => {
     let fs = require("fs");
@@ -17,8 +17,8 @@ describe("game object contains correct keys", () =>{
     test("score key exist", () =>{
         expect("score" in game).toBe(true)
     });
-    test("currentGame key exist", () =>{
-        expect("currentGame" in game).toBe(true)
+    test("should be one move in the computer's array", () =>{
+        expect(game.currentGame.length).toBe(1)
     });
     test("playerMoves key exist", () =>{
         expect("playerMoves" in game).toBe(true)

@@ -15,16 +15,16 @@ beforeAll( () => {
 // for the game object
 describe("game object contains correct keys", () =>{
     test("score key exist", () =>{
-        expect("score" in game).toBe(true)
+        expect("score" in game).toBe(true);
     });
-    test("should be one move in the computer's array", () =>{
-        expect(game.currentGame.length).toBe(1)
+    test("currentGame key exists", () =>{
+        expect("currentGame" in game).toBe(true);
     });
     test("playerMoves key exist", () =>{
-        expect("playerMoves" in game).toBe(true)
+        expect("playerMoves" in game).toBe(true);
     });
     test("choices key exist", () =>{
-        expect("choices" in game).toBe(true)
+        expect("choices" in game).toBe(true);
     });
     test("choices contains the correct ids", () =>{
         expect(game.choices).toEqual(["button1", "button2", "button3", "button4"])
@@ -43,8 +43,8 @@ describe("newGame works correctly", () => {
     test("should set game score to zero", () =>{
         expect(game.score).toEqual(0);
     });
-    test("should clear the computer sequence array", () =>{
-        expect(game.currentGame.length).toEqual(0);
+    test("should be one move in the computer's array", () =>{
+        expect(game.currentGame.length).toEqual(1);
     });
     test("should set playerMoves array to default", () =>{
         expect(game.playerMoves.length).toEqual(0);

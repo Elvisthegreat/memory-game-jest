@@ -14,6 +14,12 @@ function newGame(){
     addTurn();
 }
 
+/**
+ * Clear the playerMoves array,
+ * Randomly add a button ID to the currentGame array and push it to the computer
+ * sequence array,
+ * Call showTurn function
+ */
 function addTurn(){
     game.playerMoves = [];
     game.currentGame.push(game.choices[(Math.floor(Math.random() * 4))]);
